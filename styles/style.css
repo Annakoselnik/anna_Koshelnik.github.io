@@ -1,3 +1,88 @@
-h1 {
-    color: red;
+html, body{
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
+
+body{
+    box-sizing: border-box;
+    display: flex;
+    padding-top: 147px;
+    flex-direction: column;
+    min-height: 100vh;   
+}
+
+.page-header{
+    height: 147px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    
+}
+
+.page-header__container{
+    box-sizing: border-box;
+    display: flex;
+    max-width: 1414px;
+    width: 100%;
+    margin: 0 auto;
+    align-items: center;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.page-header__logo{
+    width: 100%;
+    max-width: 202px;
+    height: 147px;
+}
+
+.page-header__nav{
+    width: 100%;
+    padding-left: 237px;
+    max-width: 457px;
+    height: 24px;
+    padding-top: 61px;
+    padding-bottom: 62px;
+}
+
+.page-header__user-link{
+    padding-top: 46px;
+    padding-bottom: 49px;
+    width: 100%;
+    max-width: 131px;
+    height: 52px;
+    padding-left: 307px;
+}
+main{
+    flex: 1 0 auto;
+}
+
+.home__main-header{
+    max-width: 990px;
+    margin: 100.5px 465px 100px;
+    align-content: center;
+}
+
+.home__offers{
+    max-width: 624px;
+    margin: 0 648px 200px;
+}
+
+.offers__title{
+    padding:15px 40px;
+}
+
+.home__about{
+    height: 62px;
+    max-width: 624px;
+    margin: 200px auto 100px;
+}
+.page-footer {
+    height: 100px;
+    max-width: 1337px;
+    width: 100%;
+    margin: 0 auto 100px;
+}
+
