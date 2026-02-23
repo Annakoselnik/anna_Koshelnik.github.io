@@ -1,4 +1,5 @@
 .reserve {
+    .container();
     display: grid;
     gap: 65px 11%;
     grid-template-columns: 405px calc(89% - 405px);
@@ -6,20 +7,286 @@
         "checks scheme"
         "order legend";
     width: 100%;
-
-    &__checks {
-        grid-area: checks;
-    }
-
+    
     &__order {
         grid-area: order;
+        max-width: 405px;
+        width: 100%;
     }
+    &__tickets-list{
+      align-items: center;
+    }
+    &__tickets {
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 16px;
+      line-height: 19px;
+    }
+    &__qty {
+      &::after {
+        content: " " attr(data-caption) " | " attr(data-price);
+      }
+    }
+    &__sum {
+      &::after {
+        content: attr(data-currency);
+        margin-left: 4px;
+        font-size: 0.95em;
+      }
+    }
+    &__total {
+      margin: 26px auto 53px;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 27px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 405px;
 
+      &::before {
+        content: attr(data-caption);  
+        font-weight: 400;
+        flex: 1;
+        text-align: center;
+      }
+
+      &::after {
+        content: "₽";
+        flex: 1;
+        text-align: right;
+        font-size: 0.95em;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 2px;
+        white-space: nowrap;
+      }
+  }
+    &__submit { 
+        max-width: 405px;
+        width: 100%;
+        padding: 15px;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 22px;
+        text-align: center;
+        margin: 0 auto;
+        display: block;
+    }
+    
+    &__scheme-title {
+          max-width: 162px;
+          width: 100%;
+          box-sizing: border-box;
+          max-height: 34px;
+          background-color: @black;
+          color: @white;
+          padding: 6px 56px;
+          margin-top: 80px;
+          margin-bottom: 40px;
+          margin-left: auto;
+          margin-right: auto;
+          text-align: center;
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 22px;
+          
+    }
+    
     &__scheme {
         grid-area: scheme;
+        margin: 80px 67px 149px;
+        max-width: 780px;
+        width: 100%;
+        max-height: 473px;
+        box-sizing: border-box;
+        
+        &__scheme-wrapper {
+          position: relative;
+          width: 100%;
+          max-width: 780px;
+          max-height: 399px;
+
+          &::after {
+            content: "";
+            display: block;
+            width: 100%;
+            
+          }
+        }
+
+        &__scene {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+    }
+    &__legend-title {
+      max-width: 355px;
+      width: 100%;
+      text-align: right;
+      font-weight: 700px;
+      font-size: 18px;
+    }
+    &__legend {
+      grid-area: legend;
+      width: 100%;
+      max-width: 355px;
+      box-sizing: border-box;
+      justify-self: end;
+    
+      .legend {
+          &__prices {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            margin-bottom: 37px;
+          }
+          
+          &__price-item {
+              display: flex;
+              align-items: center;
+              
+              .legend__mark {
+                 display: inline-block;
+                 position: relative;
+                 width: 24px;
+                 height: 24px;
+                 margin: 20px 15px 0 0;
+                
+                  
+                  &--available {
+                      background-color: @red; 
+                  }
+                  
+                  &--booked {
+                      background-color: @black; 
+                  }
+              }
+              .legend__value {
+                margin-top: 22px;
+                font-weight: 400;
+                font-size: 14px;
+              }
+              
+              .legend__label {
+                margin-top: 22px;
+                font-weight: 400;
+                margin-left: 4px;
+                font-size: 14px;
+              }
+          }
+          
+          &__indicators {
+              display: flex;
+              flex-direction: column;
+              margin-top: 23px;
+              align-items: flex-end;
+          }
+          
+          &__indicator {
+              display: flex;
+              align-items: center;
+              margin-bottom: 18px;
+          }
+          
+          &__free {
+              display: inline-block;
+              position: relative;
+              width: 24px;
+              height: 24px;
+              margin-right: 20px;
+          }
+
+          &__free::before {
+              content: '';
+              position: absolute;
+              width: 24px;
+              height: 24px;
+              border: 3px solid @black; 
+              border-radius: 50%;
+              left: 0;
+              top: 2px;
+              z-index: 2;
+              background-color: transparent;
+              box-sizing: border-box;
+              
+          }
+
+          &__free::after {
+              content: '';
+              position: absolute;
+              width: 24px;
+              height: 24px;
+              border: 3px solid @red; 
+              border-radius: 50%;
+              left: 12px;
+              
+              z-index: 1;
+              background-color: transparent;
+              box-sizing: border-box;
+              top: 2px;
+          }
+          
+          &__save {
+              display: inline-block;
+              width: 28px;
+              height: 28px;
+              background-color: #BFBFBF; 
+              border-radius: 50%; 
+              margin-right: 20px;
+          }
+          &__text {
+              font-size: 16px;
+              line-height: 22px;
+              font-weight: 400px;
+          }
+         
+      }
     }
 
-    &__legend {
-        grid-area: legend;
+
+  
+  .check {
+    
+    grid-area: checks;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 10px 0 10px;
+    &__section-title {
+      margin-bottom: 31px;
+      max-width: 405px;
+      width: 100%;
     }
+    &--check {
+      max-width: 96px;
+      width: 100%;
+    }
+    &--red {
+      color: @red;
+      .check__mark {
+        border-color: @red;
+      }
+
+      .check__input {
+        &:checked {
+          & ~ .check__mark {
+            background-color: @red;
+          }
+        }
+      }
+    }
+
+    &--disabled {
+      pointer-events: none;
+      opacity: 0.5;
+    }
+  }
 }
