@@ -1,9 +1,22 @@
 .article-card {
     box-sizing: border-box;
+    position: relative;
     display: flex;
+    width: 100%;
+    @media @bw1170 {
+        flex-direction: column;
+        max-width: 708px;
+    }
+    &:active {
+        .article-card__picture {
+            box-shadow: 0px 0px 30px fade(@black, 55%);
+        }
+    }
     &:hover {
-        .article-card__picture{
-            box-shadow: 0px 0px 30px 0px rgba(31, 31, 30, 0.55);
+        @media (hover: hover) {
+            .article-card__picture {
+                box-shadow: 0px 0px 30px fade(@black, 55%);
+            }
         }
     }
     & + .article-card {
@@ -24,9 +37,11 @@
         }
     }
     &__link {
-        margin-right: 60px;
-        display:block;
+        flex-shrink: 0;
+        align-self: flex-start;
+        display: block;
         width: 467px;
+        margin-right: 60px;
         text-decoration: none;
         font-size: 0;
         &:hover {

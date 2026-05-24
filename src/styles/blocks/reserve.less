@@ -1,18 +1,69 @@
 .reserve {
     .container();
     display: grid;
-    gap: 65px 11%;
-    grid-template-columns: 405px calc(89% - 405px);
+  gap: 65px 11%;
+  grid-template-columns: 405px calc(89% - 405px);
+  grid-template-areas: 
+    "checks scheme"
+    "order legend"; 
+  width: 100%;
+
+  @media @bw1340 {
+    gap: 65px 6.5%;
+    grid-template-columns: 340px calc(93.5% - 340px);
+  }
+  @media @bw1020 {
+    gap: 60px;
+    grid-template-columns: auto 390px;
     grid-template-areas: 
-        "checks scheme"
-        "order legend";
-    width: 100%;
-    
+      "scheme scheme"
+      "checks legend"
+      "checks order"; 
+  }
+  @media @bw768 {
+    grid-template-columns: 100%;
+    grid-template-areas: 
+      "scheme"
+      "legend"
+      "checks"
+      "order"; 
+  }
+  
+    &__checks {
+      @media @bw768 {
+        margin-top: -111px;
+      }
+      grid-area: checks;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
     &__order {
         grid-area: order;
-        max-width: 405px;
-        width: 100%;
     }
+
+    &__scheme {
+        grid-area: scheme;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    &__scheme-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 780px;
+    }
+
+    &__scheme-wrapper svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    }
+
     &__tickets-list{
       align-items: center;
     }
@@ -97,41 +148,12 @@
           
     }
     
-    &__scheme {
-        grid-area: scheme;
-        margin: 80px 67px 149px;
-        max-width: 780px;
-        width: 100%;
-        max-height: 473px;
-        box-sizing: border-box;
-        
-        &__scheme-wrapper {
-          position: relative;
-          width: 100%;
-          max-width: 780px;
-          max-height: 399px;
-
-          &::after {
-            content: "";
-            display: block;
-            width: 100%;
-            
-          }
-        }
-
-        &__scene {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-        }
-    }
+    
     &__legend-title {
       max-width: 355px;
       width: 100%;
       text-align: right;
-      font-weight: 700px;
+      font-weight: 700;
       font-size: 18px;
     }
     &__legend {
@@ -172,14 +194,14 @@
               .legend__value {
                 margin-top: 22px;
                 font-weight: 400;
-                font-size: 14px;
+                font-size: 16px;
               }
               
               .legend__label {
                 margin-top: 22px;
                 font-weight: 400;
                 margin-left: 4px;
-                font-size: 14px;
+                font-size: 16px;
               }
           }
           
@@ -245,7 +267,7 @@
           &__text {
               font-size: 16px;
               line-height: 22px;
-              font-weight: 400px;
+              font-weight: 400;
           }
          
       }
@@ -254,12 +276,14 @@
 
   
   .check {
-    
+
     grid-area: checks;
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin: 10px 0 10px;
+    margin: 10px 0 10px; 
+    font-size: 18px;
+    
     &__section-title {
       margin-bottom: 31px;
       max-width: 405px;
@@ -289,4 +313,35 @@
       opacity: 0.5;
     }
   }
+}
+
+@media @bw768 {
+    .reserve__checks {
+      margin-top: -111px;
+    }
+
+}
+
+@media (max-width: 320px) {
+    .reserve__legend {
+        justify-self: start;
+        max-width: 100%;
+        text-align: left;
+    }
+
+    .reserve__legend-title {
+        text-align: left;
+    }
+
+    .reserve__legend .legend__prices {
+        align-items: flex-start;
+    }
+
+    .reserve__legend .legend__indicators {
+        align-items: flex-start;
+    }
+
+    .reserve__legend .legend__price-item {
+        justify-content: flex-start;
+    }
 }
