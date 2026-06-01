@@ -1,347 +1,411 @@
 .reserve {
-    .container();
-    display: grid;
-  gap: 65px 11%;
+  .container();
+  display: grid;
+  gap: 65px 11.1%;
   grid-template-columns: 405px calc(89% - 405px);
-  grid-template-areas: 
+  grid-template-areas:
     "checks scheme"
-    "order legend"; 
-  width: 100%;
+    "order legend";
 
-  @media @bw1340 {
-    gap: 65px 6.5%;
-    grid-template-columns: 340px calc(93.5% - 340px);
+  @media @bw1660 {
+    gap: 65px 6.3%;
+    grid-template-columns: 401px calc(93.7% - 401px);
   }
+
   @media @bw1020 {
     gap: 60px;
     grid-template-columns: auto 390px;
-    grid-template-areas: 
+    grid-template-areas:
       "scheme scheme"
       "checks legend"
-      "checks order"; 
+      "checks order";
   }
+
   @media @bw768 {
     grid-template-columns: 100%;
-    grid-template-areas: 
+    grid-template-areas:
       "scheme"
       "legend"
       "checks"
-      "order"; 
+      "order";
   }
-  
-    &__checks {
-      @media @bw768 {
-        margin-top: -111px;
-      }
-      grid-area: checks;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
 
-    &__order {
-        grid-area: order;
-    }
-
-    &__scheme {
-        grid-area: scheme;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-    }
-
-    &__scheme-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-      max-width: 780px;
-    }
-
-    &__scheme-wrapper svg {
+  &__checks {
+    grid-area: checks;
     width: 100%;
-    height: auto;
-    display: block;
+    margin-bottom: 10px;
+
+    @media @bw1340 {
+      margin-bottom: 15px;
     }
 
-    &__tickets-list{
-      align-items: center;
-    }
-    &__tickets {
-      margin-bottom: 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 16px;
-      line-height: 19px;
-    }
-    &__qty {
-      &::after {
-        content: " " attr(data-caption) " | " attr(data-price);
+    &:last-child {
+      @media @bw768 {
+        margin-bottom: 0;
       }
     }
-    &__sum {
-      &::after {
-        content: attr(data-currency);
-        margin-left: 4px;
-        font-size: 0.95em;
+
+    &--wrapper {
+      @media @bw768 {
+        margin-bottom: 0;
       }
     }
-    &__total {
-      margin: 26px auto 53px;
-      font-weight: 600;
-      font-size: 20px;
-      line-height: 27px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+  }
+
+  &__order {
+    grid-area: order;
+
+    @media @bw768 {
+      text-align: center;
+    }
+  }
+
+  &__scheme {
+    grid-area: scheme;
+  }
+
+  &__scheme-title {
+    box-sizing: border-box;
+    max-width: 162px;
+    width: 100%;
+    min-height: 34px;
+    margin: 0 auto 41px;
+    padding: 6px 47px;
+    background-color: @black;
+    font-family: @font1;
+    font-weight: 600;
+    color: @white;
+    text-align: center;
+
+    @media @bw1340 {
+      max-width: 130px;
+      min-height: 27px;
+      font-size: 0.6875rem;
+      font-weight: 700;
+    }
+  }
+
+  &__scheme-wrapper {
+    position: relative;
+    width: 100%;
+
+    @media @bw1340 {
+      padding: 0 40px;
+    }
+
+    @media @bw768 {
+      padding: 0;
+    }
+
+    &::after {
+      content: "";
+      display: block;
       width: 100%;
-      max-width: 405px;
+      padding-top: 51.15384%;
+    }
+  }
+
+  &__scene {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__legend {
+    grid-area: legend;
+
+    &--right {
+      text-align: right;
+
+      @media @bw768 {
+        text-align: left;
+      }
+    }
+
+    @media @bw1340 {
+      .reserve__section-title--mb:first-child {
+        padding-top: 9px;
+      }
+    }
+
+    @media @bw768 {
+      .reserve__section-title--mb:first-child {
+        padding-top: 0;
+      }
+    }
+  }
+
+  &__tickets {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 15px;
+
+    @media @bw1340 {
+      margin-bottom: 17px;
+    }
+
+    @media @bw768 {
+      margin-bottom: 11px;
+    }
+  }
+
+  &__tickets+.reserve__tickets {
+    margin-bottom: 25px;
+
+    @media @bw1340 {
+      margin-bottom: 23px;
+    }
+
+    @media @bw768 {
+      margin-bottom: 25px;
+    }
+  }
+
+  &__qty {
+    &::after {
+      content: ""attr(data-caption) " | "attr(data-price) " "attr(data-currency);
+    }
+  }
+
+  &__sum {
+    font-weight: 600;
+    font-size: 1.125rem;
+    line-height: 1.38;
+
+    @media @bw1340 {
+      font-size: 1rem;
+    }
+
+    &::after {
+      content: attr(data-currency);
+      margin-left: 2px;
+      font-size: 0.95em;
+
+      @media @bw768 {
+        margin-left: 2px;
+      }
+    }
+  }
+
+  &__total {
+    margin-bottom: 53px;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    font-weight: 600;
+    text-align: center;
+
+    @media @bw1340 {
+      margin-bottom: 45px;
+    }
+
+    @media @bw768 {
+      margin-bottom: 40px;
+      padding-left: 12px;
+      font-size: 1.125rem;
+      line-height: 1.36;
+    }
+
+    &::before {
+      content: attr(data-caption);
+      margin-right: 33px;
+
+      @media @bw768 {
+        margin-right: 74px;
+      }
+    }
+
+    &::after {
+      content: attr(data-currency);
+      margin-left: 7px;
+      font-size: 0.95rem;
+
+      @media @bw1340 {
+        font-size: 1em;
+      }
+    }
+  }
+
+  &__section-title {
+    margin: 0 0 28px;
+    font-family: @font1;
+    font-size: 1.125rem;
+    line-height: 1.4;
+
+    @media @bw1660 {
+      margin: 0 0 28px;
+    }
+
+    @media @bw1340 {
+      margin: 0 0 20px;
+      font-size: 1rem;
+    }
+
+    @media @bw768 {
+      text-align: left;
+      line-height: 1.375;
+    }
+
+    &--mb {
+      margin-bottom: 21px;
+
+      @media @bw1660 {
+        margin-bottom: 21px;
+      }
+    }
+
+    &--bw768 {
+      @media @bw1340 {
+        // margin: 0;
+        padding-right: 70px;
+      }
+
+      @media @bw768 {
+        padding-right: 90px;
+      }
+    }
+  }
+
+  &__submit {
+    width: 100%;
+    color: @white;
+
+    @media @bw768 {
+      max-width: 388px;
+    }
+  }
+
+  &__legends {
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    margin-bottom: 15px;
+
+    @media @bw768 {
+      justify-content: flex-start;
+      margin-bottom: 11px;
+    }
+  }
+
+  &__legends+.reserve__legends {
+    margin-bottom: 37px;
+
+    @media @bw768 {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__price {
+    position: relative;
+    padding-left: 33px;
+    font-size: 0.875rem;
+    line-height: 1.7;
+
+    @media @bw768 {
+      line-height: 1.43;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 138px;
+      display: block;
+      width: 24px;
+      height: 24px;
+      background-color: @red;
+
+      @media @bw768 {
+        right: 140px;
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    &--black::before {
+      background-color: @black;
+    }
+
+    &::after {
+      content: ""attr(data-price) " "attr(data-currency) " | "attr(data-person);
+    }
+  }
+
+  &__note-title {
+    font-weight: 600;
+  }
+
+  &__notes {
+    position: relative;
+    font-size: 0.875rem;
+    line-height: 1.7;
+
+    @media @bw768 {
+      margin: 0 0 18px;
+      padding-left: 45px;
+      line-height: 1.19;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      display: block;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+
+      @media @bw768 {
+        top: -4px;
+      }
+    }
+
+    &::before {
+      right: 150px;
+      border: 1px solid @black;
+
+      @media @bw1660 {
+        right: 149px;
+      }
+
+      @media @bw768 {
+        left: 0;
+      }
+    }
+
+    &::after {
+      right: 137px;
+      border: 1px solid @red;
+
+      @media @bw768 {
+        left: 12px;
+      }
+    }
+
+    &--booked {
+      @media @bw1340 {
+        margin-bottom: 0;
+      }
+
+      @media @bw768 {
+        margin-bottom: 0;
+      }
 
       &::before {
-        content: attr(data-caption);  
-        font-weight: 400;
-        flex: 1;
-        text-align: center;
+        display: none;
       }
 
       &::after {
-        content: "₽";
-        flex: 1;
-        text-align: right;
-        font-size: 0.95em;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        gap: 2px;
-        white-space: nowrap;
-      }
-  }
-    &__submit { 
-        max-width: 405px;
-        width: 100%;
-        padding: 15px;
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 22px;
-        text-align: center;
-        margin: 0 auto;
-        display: block;
-    }
-    
-    &__scheme-title {
-          max-width: 162px;
-          width: 100%;
-          box-sizing: border-box;
-          max-height: 34px;
-          background-color: @black;
-          color: @white;
-          padding: 6px 56px;
-          margin-top: 80px;
-          margin-bottom: 40px;
-          margin-left: auto;
-          margin-right: auto;
-          text-align: center;
-          font-weight: 600;
-          font-size: 16px;
-          line-height: 22px;
-          
-    }
-    
-    
-    &__legend-title {
-      max-width: 355px;
-      width: 100%;
-      text-align: right;
-      font-weight: 700;
-      font-size: 18px;
-    }
-    &__legend {
-      grid-area: legend;
-      width: 100%;
-      max-width: 355px;
-      box-sizing: border-box;
-      justify-self: end;
-    
-      .legend {
-          &__prices {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            margin-bottom: 37px;
-          }
-          
-          &__price-item {
-              display: flex;
-              align-items: center;
-              
-              .legend__mark {
-                 display: inline-block;
-                 position: relative;
-                 width: 24px;
-                 height: 24px;
-                 margin: 20px 15px 0 0;
-                
-                  
-                  &--available {
-                      background-color: @red; 
-                  }
-                  
-                  &--booked {
-                      background-color: @black; 
-                  }
-              }
-              .legend__value {
-                margin-top: 22px;
-                font-weight: 400;
-                font-size: 16px;
-              }
-              
-              .legend__label {
-                margin-top: 22px;
-                font-weight: 400;
-                margin-left: 4px;
-                font-size: 16px;
-              }
-          }
-          
-          &__indicators {
-              display: flex;
-              flex-direction: column;
-              margin-top: 23px;
-              align-items: flex-end;
-          }
-          
-          &__indicator {
-              display: flex;
-              align-items: center;
-              margin-bottom: 18px;
-          }
-          
-          &__free {
-              display: inline-block;
-              position: relative;
-              width: 24px;
-              height: 24px;
-              margin-right: 20px;
-          }
+        border: 1px solid @gray_dark;
+        background-color: @gray_dark;
 
-          &__free::before {
-              content: '';
-              position: absolute;
-              width: 24px;
-              height: 24px;
-              border: 3px solid @black; 
-              border-radius: 50%;
-              left: 0;
-              top: 2px;
-              z-index: 2;
-              background-color: transparent;
-              box-sizing: border-box;
-              
-          }
-
-          &__free::after {
-              content: '';
-              position: absolute;
-              width: 24px;
-              height: 24px;
-              border: 3px solid @red; 
-              border-radius: 50%;
-              left: 12px;
-              
-              z-index: 1;
-              background-color: transparent;
-              box-sizing: border-box;
-              top: 2px;
-          }
-          
-          &__save {
-              display: inline-block;
-              width: 28px;
-              height: 28px;
-              background-color: #BFBFBF; 
-              border-radius: 50%; 
-              margin-right: 20px;
-          }
-          &__text {
-              font-size: 16px;
-              line-height: 22px;
-              font-weight: 400;
-          }
-         
-      }
-    }
-
-
-  
-  .check {
-
-    grid-area: checks;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin: 10px 0 10px; 
-    font-size: 18px;
-    
-    &__section-title {
-      margin-bottom: 31px;
-      max-width: 405px;
-      width: 100%;
-    }
-    &--check {
-      max-width: 96px;
-      width: 100%;
-    }
-    &--red {
-      color: @red;
-      .check__mark {
-        border-color: @red;
-      }
-
-      .check__input {
-        &:checked {
-          & ~ .check__mark {
-            background-color: @red;
-          }
+        @media @bw768 {
+          left: 0;
         }
       }
     }
-
-    &--disabled {
-      pointer-events: none;
-      opacity: 0.5;
-    }
   }
-}
-
-@media @bw768 {
-    .reserve__checks {
-      margin-top: -111px;
-    }
-
-}
-
-@media (max-width: 320px) {
-    .reserve__legend {
-        justify-self: start;
-        max-width: 100%;
-        text-align: left;
-    }
-
-    .reserve__legend-title {
-        text-align: left;
-    }
-
-    .reserve__legend .legend__prices {
-        align-items: flex-start;
-    }
-
-    .reserve__legend .legend__indicators {
-        align-items: flex-start;
-    }
-
-    .reserve__legend .legend__price-item {
-        justify-content: flex-start;
-    }
 }

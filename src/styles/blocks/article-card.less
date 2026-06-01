@@ -6,6 +6,7 @@
     @media @bw1170 {
         flex-direction: column;
         max-width: 708px;
+
     }
     &:active {
         .article-card__picture {
@@ -21,6 +22,12 @@
     }
     & + .article-card {
         margin-top: 120px;
+        @media @bw1170 {
+            margin-top: 100px;
+        }
+        @media @bw500 {
+            margin-top: 80px;
+        }
         &::before {
             content: '';
             display: block;
@@ -63,7 +70,7 @@
             content: '';
             display: block;
             width: 100%;
-            padding-top: 62.715%;
+            padding-top: 62.3126%;
         }
     }
     &__img {
@@ -83,7 +90,22 @@
         width: 100%;
         padding-top: 30px;
         padding-bottom: 30px;
+        padding: 30px 0;
         padding-right: 150px;
+        @media @bw1660 {
+            padding-right: 130px;
+        }
+        @media @bw1340 {
+            padding-right: 95px;
+        }
+        @media @bw1170 {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        @media @bw500 {
+            padding-right: 0;
+            padding-bottom: 60px;
+        }
     }
     &__time {
         margin: 0 0 40px;
@@ -91,6 +113,14 @@
         font-size: 16px;
         font-weight: 300;
         line-height: 22px;
+        @media @bw1170 {
+            margin: 25px 0 0;
+        }
+        @media @bw500 {
+            margin-top: 10px;
+            font-size: 14px;
+            line-height: 19px;
+        }
     }
     &__title-link,
     &__description {
@@ -98,28 +128,59 @@
     }
     &__title-link {
         margin: auto 0 40px;
-        font-weight: 600px;
-        font-size: 24px;
         color: @black;
         text-decoration-color: transparent;
         transition: color 0.2s, text-decoration-color 0.2s;
-        &:hover {
+        @media @bw1170 {
+            margin: 40px 0 20px;
+            font-size: 20px;
+            line-height: 27px;
+        }
+        @media @bw500 {
+            margin: 20px 0 10px;
+            font-size: 16px;
+            line-height: 22px;
+        }
+        &:active {
             color: @red;
             text-decoration-color: @red;
+        }
+        &:hover {
+            @media (hover: hover) {
+                color: @red;
+                text-decoration-color: @red;
+            }
         }
     }
     &__title {
         margin: 0;
-        font-weight: 600px;
+        font-weight: 600;
         font-size: 24px;
         line-height: 33px;
     }
     &__description {
         margin: 0;
+        font-size: 16px;
+        line-height: 22px;
+        @media @bw500 {
+            font-size: 14px;
+            line-height: 19px;            
+        }
     }
     &__arrow {
         position: absolute;
         right: 0;
         bottom: 30px;
+        color: inherit;
+        transition: none;
+        @media @bw1170{
+            bottom: 0;
+        }
     }
+    @media @bw1170 {
+    .article-card__link {
+        width: 100%;          // растягиваем на всю ширину карточки
+        margin-right: 0;      // убираем правый отступ
+    }
+}
 }
