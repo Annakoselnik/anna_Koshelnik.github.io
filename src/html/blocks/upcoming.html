@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="ru">
-    @@include('blocks/head.html')
-    <body class = "body">
-        @@include('blocks/page-header.html')
-        <main class="main">
-           <div class = "events">   
-                <section class = "listing events__listing">
-                    <h2 class="listing__section-title section-title">Мероприятия</h2>
-                    <div class="listing__events-list">
-                        <!--prettier-ignore-->
-                        @@loop('blocks/event-card.html', [
-                            {
+<section class="upcoming">
+    <div class="upcoming__wrapper">   <!-- исправлено: wrapper -->
+        <div class="upcoming__container">
+            <h2 class="upcoming__title">Мероприятия</h2>
+            <div class="upcoming__swiper swiper js-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <!-- prettier-ignore -->
+                        @@include('event-card.html', 
+                            { 
                                 "class": "listing__event-card",
                                 "img": "assets/images/events/nirvana.jpg",
                                 "alt": "nirvana",
@@ -18,8 +15,13 @@
                                 "descr": "Это третий альбом группы, выпущенный после смерти Курта Кобейна и первый, содержащий студийный материал.",
                                 "time": "07.12.2024 | начало 18.00",
                                 "datetime": "2024-12-07T18:00"
-                            },
-                            {
+                            }
+                        )
+                    </div>
+                    <div class="swiper-slide">
+                        <!-- prettier-ignore -->
+                        @@include('event-card.html', 
+                            { 
                                 "class": "listing__event-card",
                                 "img": "assets/images/events/card2.jpg",
                                 "alt": "card2",
@@ -27,8 +29,13 @@
                                 "descr": "Один из самых популярных подкастов в мире. В нём авторы объясняют, как устроены разные вещи.",
                                 "time": "14.12.2024 | начало 18.30",
                                 "datetime": "2024-12-14T18:30"
-                            },
-                            {
+                            }
+                        )
+                    </div>
+                    <div class="swiper-slide">
+                        <!-- prettier-ignore -->
+                        @@include('event-card.html', 
+                            { 
                                 "class": "listing__event-card",
                                 "img": "assets/images/events/Sade.jpg",
                                 "alt": "Sade",
@@ -36,7 +43,12 @@
                                 "descr": "Музыка группы имеет эклектичный характер, сочетая в себе элементы музыки соул, джаза, ритм-блюза и фанка.",
                                 "time": "16.12.2024 | начало 20.00",
                                 "datetime": "2024-12-16T20:00"
-                            },
+                            }
+                        )
+                    </div>
+                    <div class="swiper-slide">
+                        <!-- prettier-ignore -->
+                        @@include('event-card.html', 
                             {
                                 "class": "listing__event-card",
                                 "img": "assets/images/events/gallery.jpg",
@@ -45,8 +57,13 @@
                                 "descr": "Это будет самая полная выставка с 1988 года, того времени, когда впервые заговорили о Малевиче. Экспозиция займёт два этажа павильона.",
                                 "time": "23.12.2024 | начало 20.00",
                                 "datetime": "2024-12-23T20:00"
-                            },
-                            {
+                            }
+                        )
+                    </div>
+                    <div class="swiper-slide">
+                        <!-- prettier-ignore -->
+                        @@include('event-card.html', 
+                            { 
                                 "class": "listing__event-card",
                                 "img": "assets/images/events/photoset.jpg",
                                 "alt": "photoset",
@@ -54,8 +71,13 @@
                                 "descr": "Фотографы издания расскажут, как им удается создавать потрясающие кадры и что может испортить весь процесс.",
                                 "time": "25.12.2024 | начало 13.00",
                                 "datetime": "2024-12-25T13:00"
-                            },
-                            {
+                            }
+                        )
+                    </div>
+                    <div class="swiper-slide">
+                        <!-- prettier-ignore -->
+                        @@include('event-card.html', 
+                            { 
                                 "class": "listing__event-card",
                                 "img": "assets/images/events/concert.jpg",
                                 "alt": "concert",
@@ -64,28 +86,27 @@
                                 "time": "27.12.2024 | начало 10.00",
                                 "datetime": "2024-12-27T10:00"
                             }
-                        ])
+                        )
                     </div>
-                </section>
-                <section class="events__services">
-                    <h2 class="events__section-title section-title section-title--sub">
-                        дополнительные  услуги
-                    </h2>
+                </div>
 
-                    <p class="events__section-description">
-                        Перед запуском проекта, мы подготавливаем подробную смету и согласуем ее с клиентом. 
-                        Убедившись, что все пожеланию учтены и мы можем приступать к реализациии проекта, 
-                        начинается сложная, но интересная работа, результатом которой будет проведение вашего 
-                        мероприятия на высшем уровне.
-                    </p>
+                <footer class="swiper-footer">
+                    <button type="button" class="swiper-arrow-prev arrow arrow--left">
+                        <svg class="arrow__icon" width="92" height="62">
+                            <use xlink:href="assets/icons/symbols.svg#arrow"></use>
+                        </svg>
+                    </button>
 
-                    @@include('blocks/table.html')
-                </section>
-           </div>
-        </main>
-        @@include('blocks/page-footer.html')
-        @@include('blocks/event-pp.html')
+                    <div class="swiper-pagination"></div>
 
-        <script src="./scripts/main.js"></script>
-    </body>
-</html>
+                    <button type="button" class="swiper-arrow-next arrow">
+                        <svg class="arrow__icon" width="92" height="62">
+                            <use xlink:href="assets/icons/symbols.svg#arrow"></use>
+                        </svg>
+                    </button>
+                </footer>
+            </div>
+        </div>
+        <a href="#" class="listing__link link">Смотреть все</a>
+    </div>
+</section>

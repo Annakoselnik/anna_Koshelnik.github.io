@@ -11,6 +11,8 @@
     overflow-y: auto;
     z-index: 110;
     display: none;
+    overflow-x: visible;
+    overflow-y: auto;
     &__wrapper {
         box-sizing: border-box;
         position: relative;
@@ -24,6 +26,8 @@
         background-size: auto, 100% auto;
         background-repeat: repeat, repeat-y;
         background-color: #dedede;
+        overflow: visible;
+        position: relative;
     }
     &__sticky-close {
         position: sticky;
@@ -31,6 +35,8 @@
         align-self: flex-end;
         height: 0;
         width: 0;
+        overflow: visible;   // добавляем – разрешаем содержимому выходить за границы
+        z-index: 120;
     }
     &__x-btn {
         position: absolute;
@@ -59,5 +65,10 @@
         color: @white;
         letter-spacing: 0.02em;
         z-index: 1;
+    }
+}
+.show-event-popup {
+    .pp {
+        display: flex;  // или block, зависит от вёрстки
     }
 }
