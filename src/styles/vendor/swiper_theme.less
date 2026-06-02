@@ -3,42 +3,59 @@
     display: flex;
 }
 
-.swiper--3x {
+.swiper--3s {
     width: 100%;
 
     .swiper-slide {
         box-sizing: border-box;
-        padding-right: 60px;
-        min-width: 340px;
-        width: calc(33.3333% + 20px) !important;
-    }
-    & > * {
-        width: 100%;
-    }
+        justify-content: center;
+        width: 33.3333%;
+        min-width: 280px;
 
-    .event-card {
-        &__link {
-            cursor: pointer;
-            cursor: grab;
-            &::active {
-                cursor: pointer;
-                cursor: grabbing;
-            }
+        &>* {
+            max-width: 100%;
+            width: 405px;
+            min-width: 280px;
         }
-        &__title {
-            cursor: pointer;
+
+        .event-card {
+            &__link {
+                cursor: pointer;
+                cursor: grab;
+
+                &:active {
+                    cursor: pointer;
+                    cursor: grabbing;
+                }
+            }
+
+            &__title {
+                cursor: pointer;
+            }
         }
     }
 }
 
 .swiper-footer {
-    margin: 70px auto 0;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    max-width: 522px;
-    width: 100%;
-    gap: 20px;
+    width: 530px;
+    max-width: 100%;
+    margin: 70px auto 0;
+
+    @media @bw1660 {
+        width: 479px;
+    }
+
+    @media @bw1340 {
+        width: 309px;
+        margin: 68px auto 0;
+    }
+
+    @media @bw768 {
+        margin: 60px auto 0;
+    }
 }
 
 .swiper-pagination-bullets.swiper-pagination-horizontal {
@@ -51,10 +68,7 @@
     left: auto;
     width: auto;
     margin: 0 auto;
-
-    .swiper-pagination-bullet {
-        margin: 2px 3px;
-    }
+    padding: 0 15px;
 }
 
 .swiper-pagination-bullet {
@@ -62,12 +76,25 @@
     height: 2px;
     border-radius: 2px;
     background-color: @gray_dark;
+    background-clip: padding-box;
     opacity: 1;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
+
+    @media @bw1340 {
+        width: 9px;
+    }
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background-color: @black;
     background-clip: padding-box;
 }
 
-.swiper-pagination-bullet.swiper-pagination-bullet-active  {
-    background-color: @black;
+.swiper-pagination-horizontal.swiper-pagination-bullets.swiper-pagination-bullet {
+    margin: 2px 3px;
+}
+
+.swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+    @media @bw1340 {
+        margin: 0 var(--swiper-pagination-bullet-horizontal-gap, 1.7px)
+    }
 }

@@ -28,6 +28,8 @@
     "build": "gulp build",
     "serve": "gulp serve",
     "start": "gulp start"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1"
   }
 }
-
